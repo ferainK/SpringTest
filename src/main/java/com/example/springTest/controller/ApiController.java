@@ -1,5 +1,7 @@
 package com.example.springTest.controller;
 
+import com.example.springTest.annotation.Decode;
+import com.example.springTest.annotation.Timer;
 import com.example.springTest.dto.CarRequest;
 import com.example.springTest.dto.PostRequest;
 import com.example.springTest.dto.UserRequest;
@@ -14,6 +16,7 @@ import java.util.Map;
 public class ApiController {
   // 응답
   // 1. 기본형
+  @Timer
   @GetMapping("/hello") //http://localhost:9090/api/hello
   public String hello() {
     return "hello spring boot!";
@@ -96,15 +99,24 @@ public class ApiController {
   }
 
   //del
+  @Timer
   @DeleteMapping("/del/{userId}")
-  public void del(@PathVariable String userId, @RequestParam String account){
+  public void del(@PathVariable String userId, @RequestParam String account) throws InterruptedException {
     System.out.println(userId);
     System.out.println(account);
+    Thread.sleep(1000 * 2);
   }
 
   // 응답 커스터마이징
   @PutMapping("/myput")
   public ResponseEntity<CarRequest> myPut(@RequestBody CarRequest carRequest){
     return ResponseEntity.status(HttpStatus.CREATED).body(carRequest);
+  }
+
+  @Decode
+  @PutMapping("/dput")
+  public CarRequest dPut(@RequestBody CarRequest carRequest){
+    System.out.println(carRequest.getCarNumber());
+    return carRequest;
   }
 }

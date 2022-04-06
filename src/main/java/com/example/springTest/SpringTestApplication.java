@@ -31,7 +31,7 @@ public class SpringTestApplication {
 
 }
 
-@Configuration	//하나의 Component에 여러 Bean을 입력하는 경우!
+@Configuration	//하나의 Component에 여러 Bean을 입력하는 경우! , Bean은 매소드에만 붙는다.
 class AppConfig {
 	@Bean("base64Encode")
 	public Encoder encoder(Base64Encoder base64Encoder){

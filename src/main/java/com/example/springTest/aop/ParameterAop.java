@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class ParameterAop {
 
   @Pointcut("execution(* com.example.springTest.controller..*.*(..))")
-  public void pointcut(){}
+  private void pointcut(){}
 
   @Before("pointcut()")
   public void Before(JoinPoint joinPoint){

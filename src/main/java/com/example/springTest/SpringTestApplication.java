@@ -10,9 +10,11 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @ServletComponentScan	//@WebFilter를 적용하는 경우!
+@EnableAsync //비동기 작동시
 public class SpringTestApplication {
 
 	public static void main(String[] args) {
